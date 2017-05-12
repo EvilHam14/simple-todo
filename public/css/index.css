@@ -1,0 +1,133 @@
+body{
+  background-color: #607D8B;
+}
+.module{
+  /*position: fixed;
+  top: 50%;
+  left: 50%;*/
+  /* bring your own prefixes */
+  /*transform: translate(-50%, -50%);*/
+}
+#main-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#slogan{
+  margin-top: 0;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #80CBC4;
+}
+.btn{
+  border: none;
+  font-size: 1.5rem;
+  padding: 4px 30px;
+  cursor: pointer;
+  font-family: "Droid Serif";
+}
+.btn-register{
+  border-radius: 50px;
+  background-color: #FFA726;
+  color: white;
+  margin-bottom: 20px;
+  width: 8em;
+}
+.btn-login{
+  border-radius: 50px;
+  background-color: #CFD8DC;
+  color:#546E7A;
+  width: 8em;
+}
+
+
+.hide{
+  display: none;
+}
+
+
+#signIn-container{
+
+}
+.form{
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.loginSelect{
+  border-top-left-radius: 5px;
+}
+.registerSelect{
+  border-top-right-radius: 5px;
+}
+.formSelect{
+  display: flex;
+}
+.formSelect *{
+  color: #455A64;
+  background-color: #CFD8DC;
+  font-size: 1.5rem;
+  margin: 0;
+  /*border: none;*/
+  width:50%;
+}
+.active{
+  -webkit-box-shadow: inset 6px 9px 5px -5px rgba(0,0,0,0.08);
+  -moz-box-shadow: inset 6px 9px 5px -5px rgba(0,0,0,0.08);
+  box-shadow: inset 6px 9px 5px -5px rgba(0,0,0,0.08);
+  color: white;
+  background-color: #4DB6AC;
+  /*text-decoration: underline;*/
+  /*border-bottom: 2px solid orange;*/
+}
+.input-container{
+  display: flex;
+  width: 100%;
+  font-size: 1rem;
+  margin-top: 1em;
+  justify-content: center;
+}
+
+.fa{
+  width: 20px !important;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 3px;
+  margin-left: 5px;
+  color: #B0BEC5;
+}
+.input-container input{
+  border: none;
+  font-size: 1.5rem;
+  background-color: transparent;
+  padding-left: 0.4em;
+  /*border: 2px solid white;*/
+}
+textarea:focus, input:focus {
+    color: #4DB6AC;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #B0BEC5;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #B0BEC5;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #B0BEC5;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #B0BEC5;
+}
+.submit{
+  color: #37474F;
+  /*border: none;*/
+  border-radius: 5px;
+  font-size: 1.5rem;
+  margin-top: 1em;
+  padding: 0.2em 0;
+  background-color: #FFB74D;
+  border: none;
+}

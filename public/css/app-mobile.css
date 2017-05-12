@@ -1,0 +1,54 @@
+header{
+  position: fixed;
+  top: 0;
+  background-color: rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 100vw;
+}
+header #menu{
+  width: 4rem;
+}
+
+/*=======================================*/
+
+                /*Module*/
+
+/*=======================================*/
+.modules{
+ padding-top: 8rem;
+}
+.head {
+  padding: 1em;
+  background-color: rgba(28,110,172,0.7);
+  border-radius: 3px;
+}
+.head h3{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.head , .task-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.day , .task{
+  margin-right: auto;
+}
+.tasks-container{
+  padding-top: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.action{
+  width: 2em;
+  height: 2em;
+}
+.checkButton{
+  background: transparent;
+  border: none;
+}
+.done{
+  text-decoration: line-through;
+}
+.checked{
+  content: url("/../../assets/check-box.svg")
+}

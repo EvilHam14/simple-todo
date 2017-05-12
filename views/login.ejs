@@ -1,0 +1,16 @@
+<% include ./partials/header %>
+<% include ./partials/navbar %>
+<h1>Login Form</h1>
+<form action="/login" method="POST">
+  <input type="text" name="username" placeholder="username">
+  <input type="password" name="password" placeholder="password">
+  <input type="submit" value="Login">
+</form>
+
+<% if (message.length > 0) { %>
+  <div class="alert alert-danger">
+    <strong>Invalid</strong> <%= message %>
+  </div>
+<% } %>
+
+<% include ./partials/footer %>
