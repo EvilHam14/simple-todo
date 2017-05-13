@@ -14,8 +14,23 @@ const Task        = require('./../models/task');
 //
 // DELETE  :userId/tasks/:id    Deletes task with specific id
 
+// *****************************************
+//             Query String
+//
+// n   =   newTask   String    task description
+//
+// da  =   day       Number    day task was created
+//
+// do  =   isDone    Boolean   check done state
+
+
 router.get("/", function(req, res){
-  res.json("im at index route");
+  res.json({msg: "Welcome to API Index Route!"});
+});
+
+router.post("/", function(req, res){
+  var n = req.query.n;
+  res.json({msg: "POST API Index Route!" + n});
 });
 
 // GET TASKS FROM USER
@@ -39,45 +54,40 @@ router.get("/:userId/tasks", function(req, res){
 router.post("/:userId/tasks", function(req, res){
   var userId = req.params.userId;
 
-  var newTask = new Task({username:req.session.passport.user, taskName: req.body.task, day: req.body.day, isDone: false});
+  //Casting String to Boolean
+  var isTrue = (req.query.do == 'true');
+
+  console.log(typeof isTrue);
+
+  var newTask = new Task({username:userId, taskName: req.query.n, day: req.query.da, isDone: isTrue});
 
   newTask.save(function(err){
     if(err){
       res.json({errorMsg: err});
     } else {
-      res.json({msg: "task successfully created"});
-    }
-  });
 
-  User.findByIdAndUpdate(userId, { $push: {tasks: newTask._id} }, function(err){
-    if(err){
-      res.json({errorMsg: err});
-    }
-    else{
-      res.json({msg: "task added to user"});
+      User.findByIdAndUpdate(userId, { $push: {tasks: newTask._id} }, function(err){
+        if(err){
+          res.json({errorMsg: err});
+        }
+        else{
+          res.json({msg: "task added to user"});
+        }
+      });
+
     }
   });
 
 });
 
 // UPDATES THE TASK
-rotuer.put("/:userId/tasks/:id", function(req, res){
+router.put("/:userId/tasks/:id", function(req, res){
   var userId = req.params.userId;
   var taskId = req.params.id;
 
-  // Updated data
-  var taskState = req.body.isDone;
+  var isTrue = (req.query.do == 'true');
 
-  // Comparing string "true" || "false" to
-  // Boolean value
-  var finalState = false;
-  if( taskState.localeCompare("true") == 0 ){
-    finalState = true;
-  } else {
-    finalState = false;
-  }
-
-  Task.findByIdAndUpdate(taskId, {isDone: finalState}, function(err, task){
+  Task.findByIdAndUpdate(taskId, {isDone: isTrue}, function(err, task){
     if(err){
       res.json({errorMsg: err});
     }
