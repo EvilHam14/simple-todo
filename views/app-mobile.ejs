@@ -108,11 +108,12 @@ for(var i = 0; i < 7; i++){
         <% } %>
       <% } %>
       <% } %>
-      <form action="/user/task" method="POST">
+      <input class="newTaskInput" type="text" name="newTask" placeholder="new task">
+      <!-- <form action="/user/task" method="POST">
         <input type="hidden" name="day" value="<%= addDay(dates[i].getDay(), i) %>">
         <input type="text" name="task" placeholder="new task">
         <input type="submit" value="Add">
-      </form>
+      </form> -->
     </ul>
   </div>
 
@@ -120,7 +121,14 @@ for(var i = 0; i < 7; i++){
 
 </section>
 
-<script type="text/javascript" src="/js/day.js"></script>
+
+
+<script type="text/javascript">
+  var userId = "<%=user._id%>";
 
 </script>
+
+<script type="text/javascript" src="/js/day.js"></script>
+<script type="text/javascript" src="/js/api.js"></script>
+
 <% include ./partials/footer %>
