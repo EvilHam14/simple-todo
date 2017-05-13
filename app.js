@@ -60,6 +60,7 @@ app.use(function(req, res, next){
 // Required Routes
 const indexRoutes = require('./routes/index');
 const userRoutes = require('./routes/user');
+const apiRoutes = require('./routes/api');
 
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
@@ -76,6 +77,7 @@ app.get("/", function(req, res){
 
 app.use(indexRoutes);
 app.use("/user", userRoutes);
+app.use("/api", apiRoutes);
 
 app.get("*", function(req, res){
   res.send("Are you lost???");

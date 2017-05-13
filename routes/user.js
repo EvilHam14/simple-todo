@@ -49,14 +49,14 @@ router.post("/task", function(req, res){
   });
 
       //Pass the new task id to the user.tasks[] array
-      User.findByIdAndUpdate(req.session.passport.user, { $push: {tasks: newTask._id} }, function(err){
-        if(err){
-          console.log(err);
-        }
-        else{
-          console.log("updated the task into the user!");
-        }
-      });
+  User.findByIdAndUpdate(req.session.passport.user, { $push: {tasks: newTask._id} }, function(err){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log("updated the task into the user!");
+    }
+  });
 
 
   res.redirect("/user");
