@@ -1,70 +1,5 @@
 <% include ./partials/header %>
 
-<%
-
-var date = new Date();
-var day = date.getDay();
-var month = date.getMonth();
-
-const daysOfWeek = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-
-const monthsOfYear = [
-  "January",
-  "Febuary",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-
-function addDay(d, n){
-  var sum = d + n;
-  while(sum > 6){
-    sum = sum - 7;
-  }
-  return sum;
-}
-
-function addDate(d, n){
-  var sum = d.getDate() + n;
-  while(sum > 31){
-    sum = sum - 31;
-    d.setMonth(d.getMonth() + 1); //needs its own function
-  }
-  d.setDate(sum);
-  return d;
-}
-
-
-var days = [];
-var months = [];
-var dates = [];
-
-
-for(var i = 0; i < 7; i++){
-    var newDate = new Date();
-    dates.push(newDate);
-}
-
-
-
-
-%>
-
 <link rel="stylesheet" href="/css/app-mobile.css">
 
 <header>
@@ -73,62 +8,17 @@ for(var i = 0; i < 7; i++){
 
 <section class="modules container">
 
-<% for(var i = 0; i < 7; i++) {%>
 
-  <div class="module">
-    <div class="head">
-      <h3 class="day"><%= daysOfWeek[addDay(dates[i].getDay(), i)] %></h3>
-      <h3 class="date"><%= monthsOfYear[(date.getMonth()) - 1 ] %> <%= addDate(dates[i], i).getDate() %></h3>
-    </div>
-    <ul class="tasks-container">
-      <% if(tasks[0] != null){ %>
-      <% for(var j = 0; j < tasks.length; j++) { %>
-        <% if(tasks[j].day == addDay(dates[i].getDay(), i)) { %>
-          <li class="task-container">
-            <p class="task"><%= tasks[j].taskName %></p>
-            <% if(tasks[j].isDone) { %>
-              <form class="done" action="/user/task?_method=DELETE" method="POST">
-                <input type="hidden" name="_id" value="<%= tasks[j]._id %>">
-                <button class="checkButton" type="submit" name="button"><img class="action" src="../../assets/trash.svg" alt="trash can"></button>
-              </form>
-              <form class="done" action="/user/task?_method=PUT" method="POST">
-                <input type="hidden" name="_id" value="<%= tasks[j]._id %>">
-                <input type="hidden" name="isDone" value="false">
-                <button class="checkButton" type="submit" name="button"><img class="action" src="../../assets/check-box.svg" alt="checked box"></button>
-              </form>
-            <% } else { %>
-              <form class="notDone" action="/user/task?_method=PUT" method="POST">
-                <input type="hidden" name="_id" value="<%= tasks[j]._id %>">
-                <input type="hidden" name="isDone" value="true">
-                <button class="checkButton" type="submit" name="button"><img class="action" src="../../assets/uncheck-box.svg" alt="unchecked box"></button>
-              </form>
-
-            <% } %>
-          </li>
-        <% } %>
-      <% } %>
-      <% } %>
-      <input class="newTaskInput" type="text" name="newTask" placeholder="new task">
-      <!-- <form action="/user/task" method="POST">
-        <input type="hidden" name="day" value="<%= addDay(dates[i].getDay(), i) %>">
-        <input type="text" name="task" placeholder="new task">
-        <input type="submit" value="Add">
-      </form> -->
-    </ul>
-  </div>
-
-<% } %>
+  <input class="newTaskInput" type="text" name="newTask" placeholder="new task">
 
 </section>
 
-
-
 <script type="text/javascript">
-  var userId = "<%=user._id%>";
-
+  var userId ="<%=user._id%>";
 </script>
 
-<script type="text/javascript" src="/js/day.js"></script>
 <script type="text/javascript" src="/js/api.js"></script>
+
+
 
 <% include ./partials/footer %>
