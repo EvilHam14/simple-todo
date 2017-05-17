@@ -1,6 +1,7 @@
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const router      = express.Router();
+const path        = require('path');
 const middleware  = require('./../middleware/index');
 const User        = require('./../models/user');
 const Task        = require('./../models/task');
@@ -24,7 +25,7 @@ router.get("/", middleware.isLoggedIn, function(req, res){
             console.log("Couldn't find the task");
           } else {
             console.log("found tasks: " + tasks);
-            res.render("app-mobile", {user: user, tasks: tasks});
+            res.sendFile(path.join(__dirname + './../views/app-mobile.html'));
           }
         });
       }

@@ -1,6 +1,7 @@
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const router      = express.Router();
+const path        = require('path');
 const passport    = require("passport");
 const isEmail     = require("email-validator");
 const password    = require('password-rules');
@@ -8,8 +9,10 @@ const User        = require('./../models/user');
 // const Day        = require('./../models/user');
 
 // Get login form
+
 router.get("/login", function(req, res){
-  res.render("login", { message: req.flash('error') });
+  res.sendFile(path.join(__dirname + './../views/login.html'));
+  // res.sendFile("./login.html");
 });
 
 // Post login info
@@ -29,7 +32,7 @@ router.get("/logout", function(req, res){
 });
 
 router.get("/register", function(req, res){
-  res.render("register", { message: req.flash('error') });
+  res.sendFile(path.join(__dirname + './../views/register.html'));
 });
 
 // Post login info

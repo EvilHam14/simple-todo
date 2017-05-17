@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Task App</title>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Quicksand:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="./../../css/master.css">
+    <link rel="stylesheet" href="./../css/index.css">
+    <link rel="stylesheet" href="./../../css/navbar.css">
+    <link rel="stylesheet" href="./../../css/animate.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="./../js/jquery-3.2.1.min.js"></script>
+  </head>
+  <body>
+
+    <div id="loadingBar">
+      <div class="orange"></div>
+      <div class="teal"></div>
+      <div class="gray"></div>
+    </div>
+
+    <h1>Login Form</h1>
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="username">
+      <input type="password" name="password" placeholder="password">
+      <input type="submit" value="Login">
+    </form>
+
+    <!-- <div class="alert alert-danger">
+      <strong>Invalid</strong> <%= message %>
+    </div> -->
+
+  </body>
+</html>
